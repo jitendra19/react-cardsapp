@@ -4,12 +4,22 @@ export default class CardForm extends React.Component {
   constructor(props) {
     super(props);
   }
+  username = React.createRef();
+  handleSubmit = event => {
+    console.log('this.username', this.username.current.value);
+    event.preventDefault();
+  };
   render() {
     return (
-      <div style={{ 'margin-bottom': '2rem' }}>
-        <input type="text" placeholder="enter github username" />
+      <form style={{ marginBottom: '2rem' }} onSubmit={this.handleSubmit}>
+        <input
+          type="text"
+          placeholder="enter github username"
+          required
+          ref={this.username}
+        />
         <button>Add Card</button>
-      </div>
+      </form>
     );
   }
 }
