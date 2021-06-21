@@ -10,8 +10,10 @@ export default class CardForm extends React.Component {
   // username = React.createRef();
   handleSubmit = event => {
     // console.log('this.username', this.username.current.value);
-    console.log('this.username', this.state.username);
+    // console.log('this.username', this.state.username);
     event.preventDefault();
+    this.props.addUsername(this.state.username);
+    this.setState({ username: '' });
   };
   render() {
     return (

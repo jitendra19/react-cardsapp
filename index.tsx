@@ -17,12 +17,14 @@ class App extends Component<AppProps, AppState> {
       name: 'React'
     };
   }
-
+  addUsername = username => {
+    console.log(username, 'is added.');
+  };
   render() {
     return (
       <div>
         <h1>Github Cards App</h1>
-        <CardForm />
+        <CardForm addUsername={this.addUsername} />
         <CardList />
       </div>
     );
