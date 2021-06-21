@@ -1,0 +1,19 @@
+h1,
+p {
+  font-family: Lato;
+}
+.githubProfile img {
+  width: 75px;
+  height: 75px;
+}
+.githubProfile .info {
+  display: inline-block;
+  margin-left: 1rem;
+}
+.githubProfile .info .name {
+  font-weight: bold;
+}
+.githubProfile .info .details {
+  /* font-weight: normal; */
+  font-size: 125%;
+}
