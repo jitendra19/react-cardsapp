@@ -11,7 +11,7 @@ export default class CardList extends React.Component {
     return (
       <div>
         {this.props.profiles.map(profile => (
-          <Card {...profile} />
+          <Card key={profile.id} {...profile} />
         ))}
       </div>
     );

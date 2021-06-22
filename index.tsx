@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import { render } from 'react-dom';
 import Card from './card';
 import CardList from './cardList';
@@ -10,34 +11,23 @@ interface AppState {
   name: string;
 }
 
-const testData = [
-  {
-    name: 'Dan Abramov',
-    avatar_url: 'https://avatars0.githubusercontent.com/u/810438?v=4',
-    company: '@facebook'
-  },
-  {
-    name: 'Sophie Alpert',
-    avatar_url: 'https://avatars2.githubusercontent.com/u/6820?v=4',
-    company: 'Humu'
-  },
-  {
-    name: 'Sebastian Markbåge',
-    avatar_url: 'https://avatars2.githubusercontent.com/u/63648?v=4',
-    company: 'Facebook'
-  }
-];
-
 class App extends Component<AppProps, AppState> {
   constructor(props) {
     super(props);
     this.state = {
       name: 'React',
-      profiles: testData
+      profiles: []
     };
   }
-  addUsername = username => {
+  addUsername = async username => {
     console.log(username, 'is added.');
+    const userdata = await axios.get(
+      `https://api.github.com/users/${username}`
+    );
+    console.log(userdata.data);
+    this.setState(prestate => ({
+      profiles: [...prestate.profiles, userdata.data]
+    }));
   };
   render() {
     return (
